@@ -5,13 +5,18 @@
 #include "../RCC/RCC.h"
 #include "../GPIO/Gpio.h"
 
+static uint8 MOTOR_PIN_NUM;
+static char MOTOR_GPIO_PORT;
+
 /*
  * Motor Pins from 0 to 15
  * motor_gpio_peripheral: 'A', 'B', 'C', 'D', 'E', 'H'
  */
 void Init_Motor(const uint8 motor_pin,const char motor_gpio_peripheral)
 {
-    // Example: Configure GPIO for motor control FET enable
+    MOTOR_PIN_NUM = motor_pin;
+    MOTOR_GPIO_PORT = motor_gpio_peripheral;
+
     Rcc_Init();
 
     //Enable GPIO peripheral for motor control from RCC
@@ -41,23 +46,6 @@ void Init_Motor(const uint8 motor_pin,const char motor_gpio_peripheral)
     }
 
     Gpio_Init(motor_gpio_peripheral, motor_pin, GPIO_AF, GPIO_PUSH_PULL);
-
-    Gpio_WritePin(motor_gpio_peripheral, motor_pin, LOW); // Ensure motor is off initially
 }
 
-void Start_Motor(void)
-{
-    Gpio_WritePin()
-}
-
-void Stop_Motor(void)
-{
-    GPIOA->ODR &= ~(1 << 5); // Disable motor
-}
-
-void Set_Motor_Speed(uint8_t duty_cycle)
-{
-    // Optional: if you're directly controlling duty cycle here
-    TIM3->CCR1 = duty_cycle; // Example: update PWM duty cycle
-}
 
