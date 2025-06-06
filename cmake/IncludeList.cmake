@@ -8,6 +8,8 @@ set(INCLUDE_LIST ${INCLUDE_LIST}
         ${PROJECT_PATH}/GPIO
         ${PROJECT_PATH}/lcd
         ${PROJECT_PATH}/RCC
+        ${PROJECT_PATH}/ADC
+        ${PROJECT_PATH}/PWM
 )
 set(SOURCES
         GPIO/Gpio.c

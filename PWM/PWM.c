@@ -11,7 +11,16 @@
 #include "../GPIO/GPIO.h"
 #include "../LIB/Utils.h"
 #include "../LIB/Bit_Operations.h"
+
+#define GPIOA_BASE_ADDR 	0x40020000
+#define GPIOA_MODER			REG32(GPIOA_BASE_ADDR + 0x00)
+#define GPIOA_AFRL			REG32(GPIOA_BASE_ADDR + 0x20)
+
+static uint8 CHANNEL;
+
 void PWM_Init(uint8 channel) {
+
+    CHANNEL = channel;
 
     Rcc_Enable(RCC_TIM2  );
     Rcc_Enable(RCC_GPIOA);
@@ -51,13 +60,13 @@ void PWM_Init(uint8 channel) {
     TIM2->CR1 |= TIM_CR1_CEN;
 }
 
-void PWM_SetDutyCycle(uint8 channel, uint16 duty_percent) {
+void PWM_SetDutyCycle(uint16 duty_percent) {
     uint32 arr = TIM2->ARR;
     uint32 ccr_value = (duty_percent * (arr + 1)) / 100;
 
-    if (channel == 1) {
+    if (CHANNEL == 1) {
         TIM2->CCR1 = ccr_value;
-    } else if (channel == 2) {
+    } else if (CHANNEL == 2) {
         TIM2->CCR2 = ccr_value;
     }
 }
