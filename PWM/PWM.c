@@ -70,6 +70,7 @@ void PWM_SetDutyCycle(uint16 duty_percent) {
         TIM2->CCR2 = ccr_value;
     }
 }
+
 void PWM_Start(void) {
     TIM2->CR1 |= TIM_CR1_CEN;
 }

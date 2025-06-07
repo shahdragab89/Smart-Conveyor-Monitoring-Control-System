@@ -4,6 +4,7 @@
 #include "ADC.h"
 #include"ADC_Private.h"
 #include "../RCC/RCC.h"
+
 void ADC_INIT(uint8 PORT , uint8 PIN , uint8 CHANNEL) {
     Gpio_Init(PORT, PIN , GPIO_ANALOG , GPIO_NO_PULL_DOWN);
 

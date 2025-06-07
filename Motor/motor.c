@@ -10,11 +10,12 @@
  * channel 2 --> PA1
  * channel 3 --> PB0
  * channel 4 --> PB1
+ * Motor speed ranges from 0 to (2^16)-1
  */
-void Init_Motor(const uint8 channel, const uint16 duty_percent)
+void Init_Motor(const uint8 channel, const uint16 duty_cycle_percent)
 {
-    PWM_Init(1);
-    PWM_SetDutyCycle(duty_percent);
+    PWM_Init(channel);
+    PWM_SetDutyCycle(duty_cycle_percent);
 }
 
 void Start_Motor()
@@ -30,9 +31,9 @@ void Stop_Motor()
 /*
  * Motor speed ranges from 0 to (2^16)-1
  */
-void Set_Motor_Speed(const uint16 speed)
+void Set_Motor_Speed(const uint16 duty_cycle_percent)
 {
-    PWM_SetDutyCycle(speed);
+    PWM_SetDutyCycle(duty_cycle_percent);
 }
 
 

@@ -22,7 +22,7 @@ set(EXECUTABLE                           ${CMAKE_PROJECT_NAME})
 add_executable(${EXECUTABLE} ${SOURCE_LIST} ${STARTUP_BASE_DIR}/${SERIES_FOLDER}/${MAPPED_DEVICE}.s
         lcd/lcd.h
         Motor/motor.h
-        Motor/motor.cpp
+        Motor/motor.c
 )
 # Include
 target_include_directories(${EXECUTABLE} PUBLIC ${INCLUDE_LIST})
