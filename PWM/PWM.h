@@ -34,8 +34,8 @@
 #define CH3	3   //PB0
 #define CH4	4   //PB1
 
-void PWM_Init(uint8 channel);
-void PWM_SetDutyCycle(uint16 duty_percent);      // Set duty cycle (0 to 100%)
+void PWM_Init(const uint8 channel);
+void PWM_SetDutyCycle(const uint16 duty_cycle_percent);      // Set duty cycle (0 to 100%)
 void PWM_Start(void);                     // Start PWM signal
 void PWM_Stop(void);
 

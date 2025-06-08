@@ -18,7 +18,8 @@
 
 static uint8 CHANNEL;
 
-void PWM_Init(uint8 channel) {
+void PWM_Init(const uint8 channel)
+{
 
     CHANNEL = channel;
 
@@ -60,9 +61,9 @@ void PWM_Init(uint8 channel) {
     TIM2->CR1 |= TIM_CR1_CEN;
 }
 
-void PWM_SetDutyCycle(uint16 duty_percent) {
+void PWM_SetDutyCycle(const uint16 duty_cycle_percent) {
     uint32 arr = TIM2->ARR;
-    uint32 ccr_value = (duty_percent * (arr + 1)) / 100;
+    uint32 ccr_value = (duty_cycle_percent * (arr + 1)) / 100;
 
     if (CHANNEL == 1) {
         TIM2->CCR1 = ccr_value;
